@@ -19,10 +19,10 @@ export class User {
     this.id = uuid();
   }
 
-  @Column({ type: 'timestamp with time zone', default: () => new Date() })
+  @Column({ type: 'timestamp with time zone', default: new Date() })
   createdAt: Date;
 
-  @Column({ type: 'timestamp with time zone', default: () => new Date() })
+  @Column({ type: 'timestamp with time zone', default: new Date() })
   updatedAt: Date;
 
   @BeforeInsert()
@@ -57,6 +57,12 @@ export class User {
     nullable: true,
   })
   emailToken: string;
+
+  @Column({
+    type: 'boolean',
+    default: false,
+  })
+  emailApproved: boolean;
 
   @Column({
     type: 'varchar',
@@ -97,4 +103,14 @@ export class User {
     default: false,
   })
   deleted: boolean;
+
+  @Column({
+    type: 'varchar',
+    length: 20,
+    nullable: true,
+  })
+  restoreToken: string;
+
+  @Column({ type: 'timestamp with time zone', nullable: true })
+  restoreExpires: Date;
 }

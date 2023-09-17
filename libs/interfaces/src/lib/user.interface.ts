@@ -20,4 +20,7 @@ export interface IUser {
   createdAt: Date;
   updatedAt: Date;
   avatar?: string;
+  emailApproved: boolean;
+  restoreToken: string;
+  restoreExpires: Date;
 }
