@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@webal-nest/contracts": ["libs/contracts/src/index.ts"],
+      "@webal-nest/decorators": ["libs/decorators/src/index.ts"],
+      "@webal-nest/interfaces": ["libs/interfaces/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

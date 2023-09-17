@@ -1,0 +1,14 @@
+version: '3'
+services:
+  api:
+    restart: 'unless-stopped'
+    build:
+      context: ./
+    command: npx nx serve api --prod
+    ports:
+      - '3000:3000'
+  users:
+    restart: 'unless-stopped'
+    build:
+      context: ./
+    command: npx nx serve users --prod
