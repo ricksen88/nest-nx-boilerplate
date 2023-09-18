@@ -47,6 +47,8 @@ export class UserRepository {
       firstName: admin.firstName,
       lastName: admin.lastName,
       role: admin.role,
+      emailApproved: true,
+      isActive: true,
       password: await this.createPasswordHash(admin.password),
     });
 

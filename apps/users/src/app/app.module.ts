@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RMQModule } from 'nestjs-rmq';
 import { getTypeOrmConfig } from './config/typeorm.config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { getTypeOrmConfig } from './config/typeorm.config';
     }),
     TypeOrmModule.forRootAsync(getTypeOrmConfig()),
     RMQModule.forRootAsync(getRMQConfig()),
+    UsersModule,
   ],
   controllers: [],
   providers: [],

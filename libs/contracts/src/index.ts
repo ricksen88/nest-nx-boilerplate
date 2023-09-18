@@ -1,1 +1,1 @@
-export * from './lib/contracts';
+export * from './lib/auth/create-main-admin';

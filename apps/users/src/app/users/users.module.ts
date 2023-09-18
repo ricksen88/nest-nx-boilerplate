@@ -14,7 +14,6 @@ import { AuthController } from './auth.controller';
     JwtModule.registerAsync(getJWTConfig()),
   ],
   providers: [UserRepository, UserService],
-  exports: [UserRepository],
   controllers: [UserController, AuthController],
 })
 export class UsersModule {}
