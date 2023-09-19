@@ -27,11 +27,6 @@ export class UserRepository {
     return await this.jwtService.signAsync(
       {
         id: user.id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        role: user.role,
-        deleted: user.deleted,
       },
       { expiresIn: '14d' }
     );

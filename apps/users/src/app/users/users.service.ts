@@ -19,4 +19,19 @@ export class UserService {
   async loadUser(id: string) {
     return this.userRepo.load(id);
   }
+
+  async signIn({ email, password }: { email: string; password: string }) {
+    const user = await this.userRepo.findOneByQuery({ email });
+    if (!user) throw new Error('User not found or wrong password');
+
+    const passwordValid = await this.userRepo.validatePassword(
+      password,
+      user.password
+    );
+    if (!passwordValid) throw new Error('User not found or wrong password');
+
+    if (user.deleted || !user.isActive) throw new Error('User was deleted');
+
+    return this.userRepo.login(user);
+  }
 }

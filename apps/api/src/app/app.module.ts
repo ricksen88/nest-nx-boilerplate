@@ -7,6 +7,7 @@ import { getJWTConfig } from './config/jwt.config';
 import { getRMQConfig } from './config/rmq.config';
 import { AuthController } from './controllers/auth/auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { UsersController } from './controllers/users/users.controller';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     JwtModule.registerAsync(getJWTConfig()),
     PassportModule,
   ],
-  controllers: [AuthController],
+  controllers: [AuthController, UsersController],
   providers: [JwtStrategy],
 })
 export class AppModule {}
