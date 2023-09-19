@@ -15,4 +15,8 @@ export class UserService {
       role: UserRole.MainAdmin,
     });
   }
+
+  async loadUser(id: string) {
+    return this.userRepo.load(id);
+  }
 }

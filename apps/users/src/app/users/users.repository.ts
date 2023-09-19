@@ -120,7 +120,6 @@ export class UserRepository {
       lastName: user.lastName,
       phone: user.phone,
       role: user.role,
-      approved: user.approved,
       emailConfirmed: user.emailApproved,
       avatar: user.avatar,
     };

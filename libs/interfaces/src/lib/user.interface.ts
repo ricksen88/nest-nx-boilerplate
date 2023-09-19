@@ -15,8 +15,6 @@ export interface IUser {
   phone?: string;
   isActive: boolean;
   deleted: boolean;
-  approved: boolean;
-  rejected: boolean;
   createdAt: Date;
   updatedAt: Date;
   avatar?: string;
