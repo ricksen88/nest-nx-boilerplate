@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './users.entity';
@@ -103,7 +103,7 @@ export class UserRepository {
     return this.userRepo.findOneBy(query);
   }
 
-  async updateOne(id: number, toUpdate: object) {
+  async updateOne(id: string, toUpdate: object) {
     return this.userRepo.update(id, toUpdate);
   }
 
@@ -127,7 +127,8 @@ export class UserRepository {
       },
     });
 
-    if (!user || user.deleted) throw 'User not found or was deleted';
+    if (!user || user.deleted)
+      throw new NotFoundException('User not found or was deleted');
 
     user.restoreToken = await genSalt(20);
     user.restoreExpires = moment().add(30, 'minutes').toDate();
